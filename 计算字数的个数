@@ -1,0 +1,23 @@
+#include<stdio.h>
+int countdigit(int number, int digit)
+{
+	static int count = 0;
+	if (number < 0)
+		number = -number;
+	if (number % 10 == digit)
+		count++;
+	if (number / 10 != 0)
+		countdigit(number / 10, digit);
+	return count;
+}
+
+int main(void)
+{
+	int number = 0;
+	int digit = 0;
+	printf("输入整数number和要计算个数的数字digit:");
+	scanf("%d%d", &number, &digit);
+	int count = countdigit(number, digit);
+	printf("%d的个数是：%d\n", digit, count);
+	return 0;
+}
