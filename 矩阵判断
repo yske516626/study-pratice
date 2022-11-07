@@ -1,0 +1,77 @@
+
+#include<stdio.h>
+int martix(char arr[10][10], int n)
+{
+	int i = 0;
+	int j = 0;
+	int count = 0;
+	int a = (n * (n - 1)) / 2;
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < i; j++)
+		{
+			if (arr[i][j] == '0')
+				count++;
+		}
+	}
+	if (count == a)
+		return 1;
+	else
+		return 0;
+}
+
+void my_printf(char arr[10][10], int n)
+{
+	int i = 0;
+	int j = 0;
+	printf("矩阵的分布如下：\n");
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			printf("%c ", arr[i][j]);
+		}
+		printf("\n");
+
+	}
+}
+int main(void)
+{
+	int n = 0;
+	int a = 0;
+	int i = 0;
+	int j = 0;
+	int num = 1;
+	char arr[10][10] = { 0 };
+	printf("输入矩阵的阶数n（1=<n<=10）：");
+	while (num)
+	{
+		scanf("%d", &n);
+		getchar();     /*将上一次输入时留在缓冲流的 \n 取走*/
+		if (n >= 1 && n <= 10)
+		{
+			num = 0;
+		}
+		else
+		{
+			printf("输入错误，请重新输入：");
+			num = 1;
+		}
+	}
+	printf("输入矩阵的元素：");
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			scanf("%c", &arr[i][j]);
+		}
+	}
+	int ret = martix(arr,n);
+	if (ret == 1)
+		printf("YES\n");
+	else if (ret == 0)
+		printf("NO\n");
+	/*打印矩阵的图*/
+	my_printf(arr,n);
+	return 0;
+}
