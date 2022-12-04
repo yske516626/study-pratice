@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<string.h>
+enum letter
+{
+	A = 65,
+	E = 69,
+	I = 73,
+	O = 79,
+	U = 85,
+	Z = 90
+};
+int Consonant(const char arr[], int num)
+{
+	int i = 0;
+	int count = 0; /*统计大写辅音字母的个数*/
+	printf("consonant letter string is: ");
+	for (i = 0; arr[i] != '\0'; i++)
+	{
+		if (arr[i] > A && arr[i] <= Z && arr[i] != E && arr[i] != I && arr[i] != O && arr[i] != U)
+		{
+			printf("%c", arr[i]);
+			count++;
+		}
+	}
+	return count;
+}
+int main(void)
+{
+	char arr[80] = { 0 };
+	int i = 0;
+	printf("input character string（include ）：");
+	while ((arr[i] = getchar()) != '\n' && i < 80 - 1)
+	{
+		i++;
+	}/*输入字符串*/
+	arr[i] = '\0';/*字符串结束标志*/
+	int count = Consonant(arr,sizeof(arr));/*计算大写辅音字母个数*/
+	printf("\nthe number consonant letter = %d\n", count);
+	return 0;
+}
