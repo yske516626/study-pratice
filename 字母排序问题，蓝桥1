@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include<stdlib.h>
+int cmp (const void* p1, const void* p2)
+{
+	return *(char*)p1 - *(char*)p2;
+}
+int main(void)
+{
+	char str[] = "WHERETHEREISAWILLTHEREISAWAY";
+	printf("%s\n", str);
+	printf("%d\n", strlen(str));
+	int ret = sizeof(str) / sizeof(str[0])-1;
+	qsort(str, ret, sizeof(str[0]), cmp);
+	printf("%s", str);
+	return 0;
+}
+
